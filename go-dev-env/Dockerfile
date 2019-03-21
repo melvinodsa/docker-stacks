@@ -27,4 +27,5 @@ RUN go get -u github.com/klauspost/asmfmt/cmd/asmfmt \
     github.com/josharian/impl \
     honnef.co/go/tools/cmd/keyify \
     github.com/fatih/motion \
-    github.com/koron/iferr
+    github.com/koron/iferr \
+    github.com/stamblerre/gocode
