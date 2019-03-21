@@ -1,13 +1,13 @@
 FROM golang:latest
 LABEL maintainer="melvinodsa@gmail.com"
 
-RUN apt-get update
-RUN apt-get install -y --no-install-recommends vim \
-    vim-gtk
+RUN apt-get update && apt-get install -y --no-install-recommends vim \
+    vim-gtk \
+    && rm -rf /var/lib/apt/lists/*
 RUN curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-RUN curl -fLo ~/.vimrc https://raw.githubusercontent.com/melvinodsa/vim-go-tutorial/master/vimrc
-RUN vim +PlugInstall +qall
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
+    && curl -fLo ~/.vimrc https://raw.githubusercontent.com/melvinodsa/vim-go-tutorial/master/vimrc \
+    && vim +PlugInstall +qall
 RUN go get -u github.com/klauspost/asmfmt/cmd/asmfmt \
     github.com/go-delve/delve/cmd/dlv \
     github.com/kisielk/errcheck \
